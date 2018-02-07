@@ -8,8 +8,8 @@ subtitle:
 description:
 author: gspark
 language:
-- zh-CN
-- en
+  - zh-CN
+  - en
 timezone:
 
 # URL
@@ -36,7 +36,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true # 资源文件管理
 relative_link: false
 future: true
 highlight:
@@ -76,6 +76,7 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 ### theme: landscape
 theme: next
+### theme: yilia
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -83,4 +84,16 @@ deploy:
   type: git
   repo: https://github.com/gspark/gspark.github.io.git
   branch: master
+
+
+markdown_it_plus:
+  highlight: true
+  html: true
+  xhtmlOut: false
+  breaks: true
+  langPrefix:
+  linkify: true
+  typographer: true
+  quotes: '“”‘’'
+  pre_class: highlight
 
