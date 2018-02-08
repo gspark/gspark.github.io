@@ -22,11 +22,12 @@ jvm调用操作系统方法所使用的栈。本地方法栈和虚拟机栈非�
 ## 堆
 
 简单的来讲，堆内存用于存放由new创建的对象和数组，在堆中分配的内存，由java虚拟机自动垃圾回收器来管理。
+
 ## 方法区
 
-方法区存储虚拟机加载的类信息，常量，静态变量，即时编译器编译后的代码等数据。HotSpot中也称为永久代（Permanent Generation），（存储的是除了Java应用程序创建的对象之外，HotSpot虚拟机创建和使用的对象）。 官方文档，解释为：永久代中的对象并不是永久的，只是历史上被叫做永久代罢了。 In fact, the objects in it are not “permanent”, but that's what it has been called historically。方法区在不同虚拟机中有不同的实现。
-jdk7版本的改动是把字符串常量池移到了堆中。
-jdk1.8中则把永久代给完全删除了，取而代之的是 MetaSpace。
+方法区主要存储了class的一些信息，包括运行时常量池、Classloader的引用，字段数据，方法数据等。永久代（permanent generation）只是HotSpot VM曾经用来实现方法区的一个空间；在JDK8的HotSpot VM它被元数据区（Metaspace）代替。HotSpot中也称为永久代（Permanent Generation），（存储的是除了Java应用程序创建的对象之外，HotSpot虚拟机创建和使用的对象）。方法区在不同虚拟机中有不同的实现。
+**jdk7把字符串常量池移到了堆中。
+jdk1.8中则把永久代给完全删除了，取而代之的是 MetaSpace。**
 
 ## 程序计数器
 
