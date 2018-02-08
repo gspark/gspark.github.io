@@ -21,8 +21,7 @@ jvm调用操作系统方法所使用的栈。本地方法栈和虚拟机栈非�
 
 ## 堆
 
-Java堆用于存放对象实例：The heap is the runtime data area from which momory which memory for all class instances and arrays is allocated。是垃圾收集器管理的主要区域。可细分为：新生代和老年代；新生代又可分为Eden，from Survivor，to Survivor。会抛出StackOverflowError异常。
-
+简单的来讲，堆内存用于存放由new创建的对象和数组，在堆中分配的内存，由java虚拟机自动垃圾回收器来管理。
 ## 方法区
 
 方法区存储虚拟机加载的类信息，常量，静态变量，即时编译器编译后的代码等数据。HotSpot中也称为永久代（Permanent Generation），（存储的是除了Java应用程序创建的对象之外，HotSpot虚拟机创建和使用的对象）。 官方文档，解释为：永久代中的对象并不是永久的，只是历史上被叫做永久代罢了。 In fact, the objects in it are not “permanent”, but that's what it has been called historically。方法区在不同虚拟机中有不同的实现。
