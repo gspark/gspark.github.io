@@ -1,9 +1,10 @@
 ---
 title: Navicat地址
 date: 2018-02-07 14:04:43
-tags:
+tags: software
 ---
 # Navicat下载地址
+
 国内Navicat网址是：http://www.navicat.com.cn
 网站只有中文版下载。
 
