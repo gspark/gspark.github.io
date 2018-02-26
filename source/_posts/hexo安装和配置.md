@@ -53,11 +53,11 @@ git clone https://github.com/theme-next/hexo-theme-next themes/next
 ```
 
 主题都安装到themes目录中。
-然后修改hexo目录中_config.yml文件，将其中的theme: landscape改为theme: next，然后重新执行hexo g来重新生成。
+然后修改hexo目录中_config.yml文件，将其中的theme: landscape改为theme: next，然后重新执行`hexo g`来重新生成。
 
 ## 传到github
 
-如果github pages服务都配置好了，发布上传很容易，一句hexo d就搞定。
+如果github pages服务都配置好了，发布上传很容易，一句`hexo d`就搞定。
 其次，配置_config.yml中有关deploy的部分：
 
 ```yaml
