@@ -1,7 +1,7 @@
 ---
 title: hexo安装和配置
 date: 2018-02-24 14:40:19
-tags:
+tags: software
 ---
 # hexo安装和配置
 
