@@ -710,6 +710,9 @@ theme_config:
     enable: false
     app_id: #<app_id>
     app_key: #<app_key>
+    # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
+    security: true
+    betterPerformance: false
   
   # Another tool to show number of visitors to each article.
   # visit https://console.firebase.google.com/u/0/ to get apiKey and projectId
@@ -1034,4 +1037,4 @@ theme_config:
   images: images
   
   # Theme version
-  version: 6.0.4 
+  version: 6.0.5 
