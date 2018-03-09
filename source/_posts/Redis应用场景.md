@@ -1,7 +1,7 @@
 ---
 title: Redis应用场景
 date: 2018-03-08 14:51:06
-tags:
+tags: [cache, Redis]
 ---
 # Redis应用场景
 
