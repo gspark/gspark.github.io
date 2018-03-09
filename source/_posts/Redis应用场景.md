@@ -111,7 +111,7 @@ ZREMRANGEBYSCORE key min max
 
 + 键过期通知  
   Reids 2.8 后有一种“键空间”通知的机制 [Keyspace Notifications](http://redisdoc.com/topic/notification.html)，允许客户端去订阅一些key的事件，其中就有 key过期的事件，我们可以把 key 名称设置为 task 的 id 等标识(这种方式 value 的值无法取到，所以只用 key 来识别任务)，expire 设置为计划要执行的时间，然后设置一个客户端来订阅消息过期事件，然后处理 task。因为开启键空间通知功能需要消耗一些 CPU ，所以在默认配置下，该功能处于关闭状态。可以通过修改 redis.conf 文件，或者直接使用 CONFIGSET 命令来开启或关闭键空间通知功能。配置文件修改方式如下：
-  ```java
+  ``` java
   notify-keyspace-events Ex  // 打开此配置，其中Ex表示键事件通知里面的key过期事件，每当有过期键被删除时，会发送通知
   ```
   + notify-keyspace-events 选项的参数为空字符串时，功能关闭。
@@ -121,3 +121,61 @@ ZREMRANGEBYSCORE key min max
   + 当一个键被访问时，如果键已经过期，那么该键将被删除。
   + 底层系统会在后台渐进地查找并删除那些过期的键，从而处理那些已经过期、但是还没被访问到的键。当过期键被程序发现、并且将键从数据库中删除时，Redis 会产生一个 expired 通知。Redis 并不保证生存时间（TTL）变为 0 的键会立即被删除：如果程序没有访问这个过期键，或者带有生存时间的键非常多的话，那么在键的生存时间变为0 ，直到键真正被删除这中间，可能会有一段比较显著的时间间隔。  
     那么通知产生的时间会有一段间隔，如果不能接受这个间隔，可采用有序集合的方式来实现延时任务。
+
+### 计数
+
+Redis 是一个很好的计数器，它有 INCRBY 等命令。虽然可以用数据库做计数器，来获取统计或显示新信息，但数据库太慢了。使用 Redis 就不需要再担心了。有了原子递增(atomic increment)，你可以放心的加上各种计数，用GETSET重置，或者是让它们过期。例如这样操作：
+
+``` bat
+INCR user 60
+```
+
+计算出最近用户在页面间停顿超过或不超过60秒的页面浏览量。
+
+[INCRBY](http://redisdoc.com/string/incrby.html)  
+INCRBY key increment  
+将 key 所储存的值加上增量 increment。如果 key 不存在，那么 key 的值会先被初始化为 0 ，然后再执行 INCRBY 命令。如果值包含错误的类型，或字符串类型的值不能表示为数字，那么返回一个错误。本操作的值限制在 64 位(bit)有符号数字表示之内。
+
+### 指定时间内的特定项目
+
+比如想要知道某些特定的注册用户或IP地址，他们到底有多少访问了某篇文章。在获得一次新的页面浏览时只需要这样做：
+
+``` bat
+SADD page:day0:
+```
+
+当然用unix时间替换day0，比如time()-(time()%3600*24)等等。想知道特定用户的数量吗?只需要使用
+
+``` bat
+SCARD page:day0:
+```
+
+计算某个特定用户是否访问了这个页面：
+
+``` bat
+SISMEMBER page:day0:
+```
+
+[SADD](http://redisdoc.com/set/sadd.html)  
+SADD key member [member ...]  
+将一个或多个 member 元素加入到集合 key 当中，已经存在于集合的 member 元素将被忽略。
+
+[SCARD](http://redisdoc.com/set/scard.html)  
+SCARD key  
+返回集合 key 的基数(集合中元素的数量)。
+
+[SISMEMBER](http://redisdoc.com/set/sismember.html)  
+SISMEMBER key member  
+判断 member 元素是否集合 key 的成员。
+
+### 分布式锁
+
+利用 SETNX 可实现分布式锁。
+
+[SETNX](http://redisdoc.com/string/setnx.html)  
+SETNX key value  
+将 key 的值设为 value ，当且仅当 key 不存在。若给定的 key 已经存在，则 SETNX 不做任何动作。  
+时间复杂度：O(1)  
+返回值：设置成功，返回 1 。设置失败，返回 0 。  
+
+设置成功会返回1，可表示拿到了锁，设置返回 0 表示没拿到锁，继续等待。释放锁可调用 DEL 删除 key。考虑到锁未释放而程序宕机，该锁将不会被释放的情况，可以给锁设置一个过期时间，过期后该锁会被 Redis 删除。
