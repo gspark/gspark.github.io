@@ -114,7 +114,7 @@ Java为什么在执行网络IO或者文件IO时，一定要通过堆外内存呢
 
 HeapByteBuffer 内存是分配在堆上的，直接由 Java 虚拟机负责垃圾收集，DirectByteBuffer 是通过 JNI 在 Java 虚拟机外的内存中分配了一块内存（所以即使在运行时通过 -Xmx 指定了 Java 虚拟机的最大堆内存，还是可能实例化超出该大小的 Direct ByteBuffer），DirectByteBuffer 是用户空间的，它的创建是使用了 malloc 申请的内存，该内存块并不直接由 Java 虚拟机负责垃圾收集，但是在 Direct ByteBuffer 包装类被回收时，会通过 Java Reference 机制来释放该内存块。
 
-当我们把一个地址通过JNI传递给底层的C库的时候，有一个基本的要求，就是这个地址上的内容不能失效。然而，在GC管理下的对象是会在Java堆中移动的。也就是说，有可能我把一个地址传给底层的write，但是这段内存却因为GC整理内存而失效了。所以我必须要把待发送的数据放到一个GC管不着的地方。这就是调用native方法之前，数据一定要在堆外内存的原因。DirectBuffer 没有省内存拷贝，但是使用HeapBuffer却需要多一次拷贝，所以相对来说Directbuffer要快。
+当把一个地址通过JNI传递给底层的C库的时候，有一个基本的要求，就是这个地址上的内容不能失效。然而，在GC管理下的对象是会在Java堆中移动的。也就是说，有可能把一个地址传给底层的write，但是这段内存却因为GC整理内存而失效了。所以必须要把待发送的数据放到一个GC管不着的地方。这就是调用native方法之前，数据一定要在堆外内存的原因。DirectBuffer 没有省内存拷贝，但是使用HeapBuffer却需要多一次拷贝，所以相对来说Directbuffer要快。
 
 此外，Directbuffer 的 GC 压力更小。虽然 GC 仍然管理着 DirectBuffer 的回收，但它是使用 PhantomReference 来达到的，在平常的 Young GC 或者 mark and compact 的时候却不会在内存里搬动。如果IO的数量比较大，比如在网络发送很大的文件，那么 GC 的压力下降就会很明显。[[2]](#reference)
 
