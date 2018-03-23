@@ -100,7 +100,7 @@ Kafka是由分裂为一个或多个partition的topic的集合。 Kafka中的part
 + 单个consumer以名为Group-1的Group ID 订阅名为Topic-01的topic。
 + Kafka 会以和Pub-Sub消息模型相同的方式和consumer进行交互直到新的消费者以同样的Group ID加入到消费者分组中。
 + 一旦新的消费者加入后，Kafka将操作切换到共享模式，将所有topic的消息在两个消费者间进行均衡消费。这种共享行为直到加入的消费者结点数目达到该topic的分区数。
-+  一旦消费者的数目大于topic的分区数，则新的消费者不会收到任何消息直到已经存在的消费者取消订阅。出现这种情况是因为Kafka中的每个消费者将被分配至少一个分区，并且一旦所有分区被分配给现有消费者，新消费者将必须等待。
++ 一旦消费者的数目大于topic的分区数，则新的消费者不会收到任何消息直到已经存在的消费者取消订阅。出现这种情况是因为Kafka中的每个消费者将被分配至少一个分区，并且一旦所有分区被分配给现有消费者，新消费者将必须等待。
 + 该功能被称为 “Consumer Group”。以同样的方式，Kafka将以非常简单和高效的方式提供这两种系统功能。
 
 ## kafka 消息的语义
@@ -153,4 +153,4 @@ partition存储的时候，又分成了多个segment(段)，然后通过一个in
 
 1. [kafka入门教程](https://leokongwq.github.io/2017/02/06/mq-kafka-tutorial.html)
 
-2. [kafka中的partition和offset ](http://leaver.me/2015/09/04/kafka%E4%B8%AD%E7%9A%84partition%E5%92%8Coffset/)
+2. [kafka中的partition和offset](http://leaver.me/2015/09/04/kafka%E4%B8%AD%E7%9A%84partition%E5%92%8Coffset/)
