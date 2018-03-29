@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: gspark's site
-subtitle:
-description:
+title: 厚德载物
+subtitle: 飞流直下三千尺，疑是银河落九天
+description: gspark's blog
 author: gspark
 language:
   - zh-CN
@@ -14,7 +14,8 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+## url: http://yoursite.com
+url: https://gspark.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -282,9 +283,11 @@ theme_config:
   # Key is the link label showing to end users.
   # Value before `||` delimeter is the target permalink.
   # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
-  #social:
+  social:
     #GitHub: https://github.com/yourname || github
+    GitHub: https://github.com/gspark || github
     #E-Mail: mailto:yourname@gmail.com || envelope
+    E-Mail: mailto:dreamspark@protonmail.com || envelope
     #Google: https://plus.google.com/yourname || google
     #Twitter: https://twitter.com/yourname || twitter
     #FB Page: https://www.facebook.com/yourname || facebook
@@ -348,8 +351,8 @@ theme_config:
     #  - always  expand for all pages automatically
     #  - hide    expand only when click on the sidebar toggle icon.
     #  - remove  Totally remove sidebar including sidebar toggle.
-    display: post
-    #display: always
+    ## display: post
+    display: always
     #display: hide
     #display: remove
   
@@ -748,11 +751,10 @@ theme_config:
     enable: false
     app_id: #<app_id>
     app_key: #<app_key>
-  # LeanCloud Counter Security Plugin (beta, currently under the testing).
     # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   # If you don't care about security in lc counter and just want to use it directly
   # (without hexo-leancloud-counter-security plugin), set the `security` to `false`.
-  security: false
+  security: true
   betterPerformance: false
   
   # Another tool to show number of visitors to each article.

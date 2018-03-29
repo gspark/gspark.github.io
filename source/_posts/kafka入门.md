@@ -1,7 +1,7 @@
 ---
 title: Kafka入门
 date: 2018-03-22 14:22:31
-tags: [Kafka,微服务,microservice]
+tags: [Kafka, microservice]
 ---
 # Kafka入门
 
