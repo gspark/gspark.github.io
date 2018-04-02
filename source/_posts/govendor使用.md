@@ -23,7 +23,9 @@ import "app/example.com/subpackage"
 这样使用 GOPATH 的好处：
 
 1. 可以使用 `go install` 你的子包，有利于 go build 的时间，如果子包较大，那就更明显了。
-2. go code 的自动完成可以用了。
+2. [gocode](https://github.com/nsf/gocode) 的自动完成可以用了。  
+   gocode windows安装
+   `go get -u -ldflags -H=windowsgui github.com/nsf/gocode`
 
 ### 安装指令
 
