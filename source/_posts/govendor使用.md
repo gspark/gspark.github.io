@@ -7,9 +7,7 @@ tags: go
 
 [govendor](https://github.com/kardianos/govendor) 是golang依赖包管理工具之一。
 
-## 安装
-
-### 环境变量
+## 环境变量
 
 GOROOT: go的安装路径,官方包路径根据这个设置自动匹配
 
@@ -27,11 +25,13 @@ import "app/example.com/subpackage"
    gocode windows安装
    `go get -u -ldflags -H=windowsgui github.com/nsf/gocode`
 
+## 安装
+
 ### 安装指令
 
 go get -u github.com/kardianos/govendor
 
-## 设置
+### 设置
 
 包含vendor文件夹的代码路径应该在GoPath路径下：
 
@@ -46,6 +46,21 @@ $GOPATH/src/
 ```
 
 如上面的例子，example.com为工程文件夹，main.go 和 vendor 在此目录下，为同一级。
+
+### 配置文件 vendor.json
+
+配置文件 vendor.json 中的 rootPath 是指 `$GOPATH/src` 下的路径，例如：
+
+``` json
+"rootPath": "services/example.com"
+```
+
+路径是：
+```bat
+$GOPATH/src/
+   services/example.com
+
+```
 
 ## 使用
 
