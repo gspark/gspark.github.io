@@ -1,7 +1,7 @@
 ---
 title: kafka启动
 date: 2018-08-21 11:16:01
-tags: kafka
+tags: Kafka
 ---
 
 # 启动kafka
