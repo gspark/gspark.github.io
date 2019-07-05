@@ -11,7 +11,7 @@ tags: git
 ### 克隆
 
 ```bash
-git svn int http://ip/svn/demo/trunk demo
+git svn init http://ip/svn/demo/trunk demo
 git svn fetch -r HEAD
 
 或者
