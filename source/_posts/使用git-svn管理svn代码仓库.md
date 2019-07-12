@@ -11,12 +11,13 @@ tags: git
 ### 克隆
 
 ```bash
-git svn init http://ip/svn/demo/trunk demo
+git svn init http://ip/svn/demo/trunk demo -s --prefix=svn/ --username user
 git svn fetch -r HEAD
+git svn fetch -r2:HEAD
 
 或者
 
-git svn clone http://ip/svn/demo/trunk -s --prefix=svn/
+git svn clone http://ip/svn/demo/trunk -s --prefix=svn/ --username user
 ```
 
 clone执行Runs init and fetch
@@ -34,7 +35,10 @@ git svn clone -r<开始版本号>:<结束版本号> <svn项目地址> [其他参
 git svn clone -r2:HEAD file:///d/Projects/svn_repo proj1_git -s
 ```
 
-其中2为svn版本号，HEAD代表最新版本号，就是只下载svn服务器上版本2到最新的版本的代码
+其中2为svn版本号，HEAD代表最新版本号，就是只下载svn服务器上版本2到最新的版本的代码。
+一般情况下git svn clone会从第一个版本开始同步，如果版本号已经到了好几万（或更高？），这个操作会相当的费时。这时可以使用参数-r$REVNUMBER:HEAD检出指定版本后的代码。  
+`svn info svn_repository_url`, 记录最后的版本号，假设是260 假设要检出最后5个版本，做个简单的减法： 260 – 5 = 255 开始clone操作了：  
+`git-svn clone -r255:HEAD svn_repository_url`
 
 ### 更新
 
