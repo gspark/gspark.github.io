@@ -40,7 +40,7 @@ MySQL5转MySQL8相对比较简单，手动转或者用Navicat转都不复杂，N
 
 ```sh
 $mysql_dir/bin/mysqladmin -u root -p shutdown
-$mysql_dir/bin/safe_mysqld &
+$mysql_dir/bin/./mysqld_safe &
 ```
 
 mysqladmin和mysqld_safe位于Mysql安装目录的bin目录下。
