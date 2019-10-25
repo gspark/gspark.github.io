@@ -44,3 +44,5 @@ $mysql_dir/bin/./mysqld_safe &
 ```
 
 mysqladmin和mysqld_safe位于Mysql安装目录的bin目录下。
+
+**mysql5.7在 windows 平台也有 mysqladmin 指令，测试可以该指令来停止 mysql 服务。**
