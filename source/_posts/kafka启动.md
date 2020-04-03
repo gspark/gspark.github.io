@@ -4,17 +4,17 @@ date: 2018-08-21 11:16:01
 tags: Kafka
 ---
 
-# 启动kafka
+## 启动kafka
 
 启动前需要先查看ZooKeeper是否已经安装启动
 
-## 前台启动kafka
+### 前台启动kafka
 
 ```bash
 ./bin/kafka-server-start.sh ./config/server.properties
 ```
 
-## 后台启动kafka
+### 后台启动kafka
 
 ```bash
 nohup ./bin/kafka-server-start.sh config/server.properties &
@@ -22,10 +22,22 @@ nohup ./bin/kafka-server-start.sh config/server.properties &
 ./bin/kafka-server-start.sh -daemon config/server.properties
 ```
 
-## 检查kafka是否启动
+### 检查kafka是否启动
 
 ```bash
 jps -l | grep kafka
 输出：
 16318 kafka.Kafka
+```
+
+### 停止kafka
+
+```bash
+./bin/kafka-server-stop.sh
+```
+
+### 停止ZooKeeper
+
+```bash
+./bin/zookeeper-server-stop.sh
 ```
