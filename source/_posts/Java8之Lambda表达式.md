@@ -25,11 +25,22 @@ public void sort(List<Student> students) {
 
 ```Java
 public void sort2(List<Student> students) {
-    students.sort(comparing(Student::getScore));
+    students.sort(comparing((s) -> {
+            return s.getScore();
+        }));
 }
 ```
 
 这就是一个 Lambda 表达式，它念起来就是“给学生排序，比较得分的多少”。
+上面的代码可改成：
+
+```Java
+public void sort2(List<Student> students) {
+    students.sort(comparing(Student::getScore));
+}
+```
+
+`::`语法 是Java 8的方法引用（即“把这个方法作为值”），比上面的写法更简洁。
 
 ## 什么是 Lambda 表达式
 
