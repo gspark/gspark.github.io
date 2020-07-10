@@ -164,3 +164,7 @@ public class MemModle1 {
     }
 }
 ```
+
+## 引用
+
+极客时间 -《Java内存模型》
