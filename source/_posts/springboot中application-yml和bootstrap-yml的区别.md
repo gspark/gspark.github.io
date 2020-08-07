@@ -48,6 +48,18 @@ spring.cloud.config.server.git.uri，添加连接到配置中心的配置属性�
 
   **需要注意的是，有些文章说 bootstrap 不会被本地配置覆盖，如果这个说法是指 bootstrap 配置属性不会被 application 覆盖，那是错误的。**
 
+  **如果 spring.profiles.active 配置多个 profile，最后面的 profile 才会生效。例如：**
+  
+  ```YAML
+    spring:
+      application:
+        name: foo
+      profiles:
+        active: dev,mysql
+  ```
+  
+  mysql profile才有效
+
 * 在接配置中心的情况下，如果有 application.yml，它的属性值会被从配置中心中的同名属性值覆盖。
 
 ## 思考
@@ -55,3 +67,5 @@ spring.cloud.config.server.git.uri，添加连接到配置中心的配置属性�
 在没有配置中心的情况下，是选择使用 bootstrap.yml 还是 application.yml，或者两者都用？
 根据 bootstrap.yml 典型的应用场景，在没有配置中心的情况下，使用 bootstrap.yml 的意义不大，即使有加解密信息，将它们放到 application.yml 也是可以的。
 建议在没有配置中心的情况下，去掉 bootstrap.yml 只使用 application.yml，减少配置文件，配置集中以减少出错的几率。
+
+spring.profiles.active
