@@ -67,5 +67,3 @@ spring.cloud.config.server.git.uri，添加连接到配置中心的配置属性�
 在没有配置中心的情况下，是选择使用 bootstrap.yml 还是 application.yml，或者两者都用？
 根据 bootstrap.yml 典型的应用场景，在没有配置中心的情况下，使用 bootstrap.yml 的意义不大，即使有加解密信息，将它们放到 application.yml 也是可以的。
 建议在没有配置中心的情况下，去掉 bootstrap.yml 只使用 application.yml，减少配置文件，配置集中以减少出错的几率。
-
-spring.profiles.active
