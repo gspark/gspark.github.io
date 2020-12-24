@@ -33,11 +33,11 @@ SMTPS（SMTP-over-SSL）为 SMTP 协议基于 SSL 安全协议之上的一种变
 ```yml
 spring:
   mail:
-    host: mail.yusys.com.cn #发送邮件服务器
-    username: xxx@yusys.com.cn #发送邮件的邮箱地址
+    host: mail.163.com #发送邮件服务器
+    username: xxx@163.com #发送邮件的邮箱地址
     password: xxx
-    from: xXx@yusys.com.cn # 发送邮件的地址，和上面username一致
-    to: sss@yusys.com.cn
+    from: xXx@163.com # 发送邮件的地址，和上面username一致
+    to: sss@163.com
     default-encoding: utf-8
     protocol: smtps
     port: 465
@@ -55,9 +55,9 @@ spring:
 
 1. password 是客户端授权码，有客户端授权码填授权码，没有的话，填发送邮箱的密码。
 2. protocol 需要填写。
-   **邮件服务器采用 SMTPS 协议发送协议，protocol 的值要写成 smtps；如果采用 SMTP，则要写成 smtp。**
+   **邮件服务器采用 SMTPS 发送协议，protocol 的值要写成 smtps；如果采用 SMTP，则要写成 smtp。**
 3. port 的键是 spring.mail.port
-   **有些文章将 port 的键写成了 spring.mail.properties.mail.smtp.port，这可能是SpringBoot的版本原因，注意区分。**
+   **有些文章将 port 的键写成了 spring.mail.properties.mail.smtp.port，这可能是 SpringBoot 的版本原因，注意区分。**
 
 ## 封装接口实现发送
 
